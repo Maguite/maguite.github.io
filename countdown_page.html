@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: url('https://i.gifer.com/wPe.gif') repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="message">Time Remaining: <span id="timer">300</span> seconds</h1>
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="error" style="color: red;"></p>
+    </div>
+
+    <script>
+        let timeLeft = 300;
+        let countdown = setInterval(function() {
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                document.getElementById("message").innerHTML = "BOOM! C'est terminé. Trop nul.";
+                document.body.style.background = "black";
+            } else {
+                document.getElementById("timer").textContent = timeLeft;
+                timeLeft -= 1;
+            }
+        }, 1000);
+
+        function checkPassword() {
+            const correctPassword = "LA FORCE"; // Updated password
+            let input = document.getElementById("password").value;
+            if (input === correctPassword) {
+                clearInterval(countdown);
+                document.getElementById("message").innerHTML = "Bravo, vous êtes sauvés! Maintenant, en avant moussaillons, il est temps de trouver ce trésor!";
+                document.body.style.background = "url('https://i.gifer.com/1t8y.gif') repeat center center fixed";
+                document.body.style.backgroundSize = "cover";
+            } else {
+                document.getElementById("error").textContent = "Incorrect Password! Try Again.";
+            }
+        }
+    </script>
+</body>
+</html>
