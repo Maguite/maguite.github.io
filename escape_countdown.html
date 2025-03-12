@@ -36,7 +36,7 @@
         input, button {
             margin-top: 10px;
             padding: 10px;
-            width: 30%;
+            width: 70%;
         }
         #error {
             color: red;
@@ -55,14 +55,14 @@
     </div>
 
     <script>
-        let timeLeft = 30; // 5 minutes
+        let timeLeft = 520; // 7 minutes
         let countdown = setInterval(function() {
             if (timeLeft <= 0) {
                 clearInterval(countdown);
                  // Change screen to black with red text
                 document.body.style.background = "black";
                 document.body.innerHTML = `
-                    <h1 style="color: red; font-size: 50px; text-align: center; margin-top: 20%;">Noooooooooooo... BOOM!!</h1>
+                    <h1 style="color: red; font-size: 50px; text-align: center; margin-top: 20%;">Nooooooooo...<br>BOOM!!</h1>
                 `;
             } else {
                 let minutes = Math.floor(timeLeft / 60);
@@ -94,7 +94,7 @@
                 // Change content
                 document.getElementById("main-content").innerHTML = `
                     <h1><font size = "7">Bravoooooo!</font></h1>
-                    <p> Maintenant, en route mousaillons, le trésor vous attends! <br> <font size = "3">psst... Regardez sous la table!</font></p>
+                    <p> Maintenant, en route mousaillons, le trésor vous attends! <br> <font size = "1">psst... Regardez sous la table!</font></p>
                     <div id="timer">${document.getElementById("timer").textContent}</div>
                 `;
             } else {
