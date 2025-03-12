@@ -10,7 +10,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background: url('https://i.gifer.com/7efs.gif') center center fixed;
+            background: url('https://i.gifer.com/wPe.gif') center center fixed;
             background-size: cover;
             color: white;
             margin: 0;
@@ -36,7 +36,7 @@
         input, button {
             margin-top: 10px;
             padding: 10px;
-            width: 100%;
+            width: 80%;
         }
         #error {
             color: red;
@@ -47,10 +47,10 @@
 <body>
 
     <div class="container" id="main-content">
-        <h1>Find the password to stop the countdown!</h1>
+        <h1>Trouvez le mot de passe pour éteindre la dynamite!</h1>
         <div id="timer">5:00</div>
-        <input type="password" id="password" placeholder="Enter Password">
-        <button onclick="checkPassword()">Submit</button>
+        <input type="password" id="password" placeholder="Mot de passe">
+        <button onclick="checkPassword()">Valider</button>
         <p id="error"></p>
     </div>
 
@@ -74,18 +74,27 @@
             let input = document.getElementById("password").value;
             let errorText = document.getElementById("error");
 
+            const errorMessages = [
+                "Try again, loser.",
+                "Bah non, c'est pas ça.",
+                "Non.",
+                "Arrr! Nuuuul.",
+                "Tu peux te dépêcher de trouver la bonne réponse stp?"
+            ];
+
             if (input === correctPassword) {
                 clearInterval(countdown); // Stop the timer
-                document.body.style.background = "url('https://i.gifer.com/5Oqn.gif') center center fixed"; // Treasure chest GIF
+                document.body.style.background = "url('https://i.gifer.com/4A5.gif') center center fixed"; // Fireworks
                 document.body.style.backgroundSize = "cover";
                 
                 // Change content
                 document.getElementById("main-content").innerHTML = `
-                    <h1>Congratulations! You found the treasure!</h1>
+                    <h1><font size = "7">Bravoooooo!</font><br> Maintenant, en route mousaillons, le trésor vous attends! <br> <font size = "3">psst... Regardez sous la table!</font></h1> center
                     <div id="timer">${document.getElementById("timer").textContent}</div>
                 `;
             } else {
-                errorText.textContent = "Password Incorrect! Try Again.";
+                let randomIndex = Math.floor(Math.random() * errorMessages.length);
+                errorText.textContent = errorMessages[randomIndex]; // Pick a random message
                 document.getElementById("password").value = ""; // Clear input
             }
         }
