@@ -55,11 +55,15 @@
     </div>
 
     <script>
-        let timeLeft = 300; // 5 minutes
+        let timeLeft = 30; // 5 minutes
         let countdown = setInterval(function() {
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                document.getElementById("timer").textContent = "00:00";
+                 // Change screen to black with red text
+                document.body.style.background = "black";
+                document.body.innerHTML = `
+                    <h1 style="color: red; font-size: 50px; text-align: center; margin-top: 20%;">Noooooooooooo... BOOM!!</h1>
+                `;
             } else {
                 let minutes = Math.floor(timeLeft / 60);
                 let seconds = timeLeft % 60;
