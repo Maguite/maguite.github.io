@@ -48,14 +48,14 @@
 
     <div class="container" id="main-content">
         <h1>Trouvez le mot de passe pour éteindre la dynamite!</h1>
-        <div id="timer">5:00</div>
+        <div id="timer">10:00</div>
         <input type="password" id="password" placeholder="Mot de passe">
         <button onclick="checkPassword()">Valider</button>
         <p id="error"></p>
     </div>
 
     <script>
-        let timeLeft = 520; // 7 minutes
+        let timeLeft = 600; // 10 minutes
         let countdown = setInterval(function() {
             if (timeLeft <= 0) {
                 clearInterval(countdown);
