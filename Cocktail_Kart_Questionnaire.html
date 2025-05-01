@@ -131,7 +131,7 @@
       const userAnswer = input.value.trim().toLowerCase();
 
       if (userAnswer === correctAnswer.toLowerCase()) {
-        success.innerHTML = `✔ Bonne réponse ! Le chiffre secret pour ce mini-jeu est : <strong>${revealNumber}</strong>`;
+        success.innerHTML = `✔ Bonne réponse ! Le chiffre secret de ce mini-jeu est : <strong>${revealNumber}</strong>`;
         success.style.color = 'green';
         input.style.borderColor = 'green';
         input.disabled = true;
@@ -161,7 +161,7 @@
       const success = document.getElementById('s4');
 
       if (allCorrect) {
-        success.innerHTML = `✔ Toutes les bonnes réponses ! Le chiffre est : <strong>2</strong>`;
+        success.innerHTML = `✔ Toutes les bonnes réponses ! Le chiffre secret de ce mini-jeu est : <strong>2</strong>`;
         success.style.color = 'green';
       } else {
         success.innerHTML = '';
