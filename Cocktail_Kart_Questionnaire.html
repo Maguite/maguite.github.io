@@ -9,8 +9,11 @@
       margin: 40px;
       background-color: #f7f7f7;
     }
-    h1 {
-      color: #c0392b;
+    header img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 30px;
     }
     .question {
       margin-bottom: 30px;
@@ -56,7 +59,9 @@
 </head>
 <body>
 
-  <h1>Questionnaire Cocktail Kart</h1>
+  <header>
+  <img src="game_images/cocktailkart.png" alt="Questionnaire Cocktail Kart">
+  </header>
 
   <div class="question" id="q1">
     <img class="icon" src="game_images/greenshell.png" alt="Green Shell">
@@ -91,9 +96,19 @@
   <div class="question" id="q4">
     <img class="icon" src="game_images/star.png" alt="Star">
     <div class="content">
-      <p>Qui est le gagnant ?</p>
-      <input type="text" id="a4">
-      <button onclick="checkAnswer(4, 'Daisy', 2)">Entrer</button>
+      <p>Quel est l'ordre des gagnants ?</p>
+      <div>
+        <input type="text" id="a4-1">
+        <button onclick="checkMultiAnswer(1, 'Daisy')">Entrer</button>
+      </div>
+      <div>
+        <input type="text" id="a4-2">
+        <button onclick="checkMultiAnswer(2, 'Bowser')">Entrer</button>
+      </div>
+      <div>
+        <input type="text" id="a4-3">
+        <button onclick="checkMultiAnswer(3, 'Waluigi')">Entrer</button>
+      </div>
       <div class="success" id="s4"></div>
     </div>
   </div>
@@ -124,6 +139,32 @@
         success.innerHTML = "❌ Mauvaise réponse, essayez encore.";
         success.style.color = 'red';
         input.style.borderColor = 'red';
+      }
+    }
+
+    const q4Answers = {
+      1: false,
+      2: false,
+      3: false
+    };
+
+    function checkMultiAnswer(id, correct) {
+      const input = document.getElementById(`a4-${id}`);
+      const userAnswer = input.value.trim().toLowerCase();
+      const result = (userAnswer === correct.toLowerCase());
+
+      q4Answers[id] = result;
+      input.style.borderColor = result ? 'green' : 'red';
+      input.disabled = result;
+
+      const allCorrect = Object.values(q4Answers).every(v => v === true);
+      const success = document.getElementById('s4');
+
+      if (allCorrect) {
+        success.innerHTML = `✔ Toutes les bonnes réponses ! Le chiffre est : <strong>2</strong>`;
+        success.style.color = 'green';
+      } else {
+        success.innerHTML = '';
       }
     }
   </script>
