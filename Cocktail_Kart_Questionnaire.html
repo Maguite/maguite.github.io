@@ -120,9 +120,21 @@
     </div>
   </div>
 
+    <!-- Final Code Section -->
+  <div class="question" id="final">
+    <img class="icon" src="images/final.png" alt="Key Icon">
+    <div class="content">
+      <p>Entrez le code final :</p>
+      <input type="text" id="final-code">
+      <button onclick="checkFinalCode()">Entrer</button>
+      <div class="success" id="final-success"></div>
+    </div>
+  </div>
+  
   <div class="hint">
     Si vous êtes coincées, demandez de l'aide à Maguite !
   </div>
+
 
   <script>
     function checkAnswer(num, correctAnswer, revealNumber) {
@@ -165,6 +177,23 @@
         success.style.color = 'green';
       } else {
         success.innerHTML = '';
+      }
+    }
+
+    function checkFinalCode() {
+      const input = document.getElementById('final-code');
+      const success = document.getElementById('final-success');
+      const code = input.value.trim();
+
+      if (code === '4627') {
+        success.innerHTML = "🔑 La clé est sur l'étagère à côté de la télévision!<br>(Soyez discrets et n'oubliez pas de la remettre)";
+        success.style.color = 'green';
+        input.style.borderColor = 'green';
+        input.disabled = true;
+      } else {
+        success.innerHTML = "❌ Code incorrect.";
+        success.style.color = 'red';
+        input.style.borderColor = 'red';
       }
     }
   </script>
