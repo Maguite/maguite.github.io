@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Questionnaire Cocktail Kart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f7f7f7;
+    }
+    h1 {
+      color: #c0392b;
+    }
+    .question {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+    }
+    .content {
+      flex: 1;
+    }
+    input {
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .success {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .hint {
+      margin-top: 50px;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Questionnaire Cocktail Kart</h1>
+
+  <div class="question" id="q1">
+    <img class="icon" src="images/greenshell.png" alt="Green Shell">
+    <div class="content">
+      <p>Combien de differences trouvez-vous ?</p>
+      <input type="text" id="a1">
+      <button onclick="checkAnswer(1, '5', 7)">Entrer</button>
+      <div class="success" id="s1"></div>
+    </div>
+  </div>
+
+  <div class="question" id="q2">
+    <img class="icon" src="images/redshell.png" alt="Red Shell">
+    <div class="content">
+      <p>Quel est le mot secret ? (tout minuscules)</p>
+      <input type="text" id="a2">
+      <button onclick="checkAnswer(2, 'panoramix', 3)">Entrer</button>
+      <div class="success" id="s2"></div>
+    </div>
+  </div>
+
+  <div class="question" id="q3">
+    <img class="icon" src="images/mushroom.png" alt="Mushroom">
+    <div class="content">
+      <p>Quel est le chiffre caché ?</p>
+      <input type="text" id="a3">
+      <button onclick="checkAnswer(3, '13', 5)">Entrer</button>
+      <div class="success" id="s3"></div>
+    </div>
+  </div>
+
+  <div class="question" id="q4">
+    <img class="icon" src="images/star.png" alt="Star">
+    <div class="content">
+      <p>Qui est perdant ?</p>
+      <input type="text" id="a4">
+      <button onclick="checkAnswer(4, 'Waluigi', 9)">Entrer</button>
+      <div class="success" id="s4"></div>
+    </div>
+  </div>
+
+  <div class="question" id="q5">
+    <img class="icon" src="images/giftbox.png" alt="Star">
+    <div class="content">
+      <p>"L'ordre est indiqué par les réponses du quiz."</p>
+    </div>
+  </div>
+
+  <div class="hint">
+    Si vous êtes coincées, demandez de l'aide à Maguite !
+  </div>
+
+  <script>
+    function checkAnswer(num, correctAnswer, revealNumber) {
+      const input = document.getElementById('a' + num);
+      const success = document.getElementById('s' + num);
+      const userAnswer = input.value.trim().toLowerCase();
+
+      if (userAnswer === correctAnswer.toLowerCase()) {
+        success.innerHTML = `✔ Bonne réponse ! Le chiffre secret pour ce mini-jeu est : <strong>${revealNumber}</strong>`;
+        success.style.color = 'green';
+        input.style.borderColor = 'green';
+        input.disabled = true;
+      } else {
+        success.innerHTML = "❌ Mauvaise réponse, essayez encore.";
+        success.style.color = 'red';
+        input.style.borderColor = 'red';
+      }
+    }
+  </script>
+
+</body>
+</html>
